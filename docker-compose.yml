@@ -1,0 +1,37 @@
+version: '3'
+
+volumes:
+  pgdata:
+
+services:
+  api:
+    build: .
+    command: python manage.py runserver_plus 0.0.0.0:8080
+    volumes:
+      - .:/code
+    ports:
+      - "8080:8080"
+    environment:
+      - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
+      - DEBUG=${DEBUG}
+      - SECRET_KEY=${SECRET_KEY}
+      - DB_USER=${DB_USER}
+      - DB_NAME=${DB_NAME}
+      - DB_PASS=${DB_PASS}
+      - DB_PORT=${DB_PORT}
+      - DB_HOST=${DB_HOST}
+    links:
+      - database
+    depends_on:
+      - database
+
+  database:
+    image: postgres:alpine
+    expose:
+      - 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
