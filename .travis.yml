@@ -14,4 +14,6 @@ before_install:
 
 install: echo OK
 
-script: make test
+script:
+  - docker-compose run --rm api flake8 .
+  - docker-compose run --rm api pytest --ds=teleclinic.settings

@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY") or "*g^ks4r#78$=8$30&wa0m!t$y2y0u7cou(q=b&tx7sei-hh^+d"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG")
+DEBUG = os.getenv("DEBUG") or False
 
 ALLOWED_HOSTS = []
 
@@ -80,11 +80,11 @@ WSGI_APPLICATION = "teleclinic.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASS"),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
+        "NAME": os.getenv("DB_NAME") or "teleclinic",
+        "USER": os.getenv("DB_USER") or "root",
+        "PASSWORD": os.getenv("DB_PASS") or "root",
+        "HOST": os.getenv("DB_HOST") or "database",
+        "PORT": os.getenv("DB_PORT") or 5432,
     }
 }
 

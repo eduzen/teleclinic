@@ -1,5 +1,3 @@
-include .env
-
 COMPOSE=docker-compose
 DOCKER_RUN=${COMPOSE} run --rm
 
