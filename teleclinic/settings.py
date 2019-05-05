@@ -81,7 +81,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": os.getenv("DB_NAME") or "teleclinic",
-        "USER": os.getenv("DB_USER") or "root",
+        "USER": os.getenv("DB_USER") or "postgres",
         "PASSWORD": os.getenv("DB_PASS") or "root",
         "HOST": os.getenv("DB_HOST") or "database",
         "PORT": os.getenv("DB_PORT") or 5432,
@@ -119,3 +119,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "statics")
+
+LOGIN_REDIRECT_URL = '/api/users/'

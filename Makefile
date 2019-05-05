@@ -4,6 +4,9 @@ DOCKER_RUN=${COMPOSE} run --rm
 start:
 	${COMPOSE} up -d
 
+stop:
+	${COMPOSE} down
+
 logs:
 	${COMPOSE} logs -f api
 

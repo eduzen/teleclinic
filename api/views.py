@@ -1,4 +1,6 @@
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
+
 from rest_framework import viewsets, permissions
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
@@ -18,3 +20,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (CustomerAccessPermission,)
+
+    def perform_create(self, serializer):
+        serializer.validated_data['password'] = make_password(serializer.validated_data['password'])
+        serializer.save()
