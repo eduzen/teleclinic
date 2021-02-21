@@ -3,7 +3,7 @@ django-extensions==2.1.6
 django-filter==2.1.0
 djangorestframework==3.9.3
 markdown==3.1
-Werkzeug==0.15.2
+Werkzeug==0.15.3
 psycopg2-binary
 pytest
 pytest-django
